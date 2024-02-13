@@ -49,9 +49,14 @@ select * from StrugglesMax where Sad=(select Sad=Max(sad) from StrugglesMax)
 select *from StrugglesMax where Sad=(select Sad=Max(sad) from StrugglesMax  where
 Suicideattempt=(select Suicideattempt=Max(Suicideattempt) from StrugglesMax))
 
+--Percentage of women struggling with "Feeling_sad_or_Tearful" ness in  differnt age groups order by the highest percentage
+
+select  Age,
+round(sum(cast(Feeling_sad_or_Tearful As float))/count(Feeling_sad_or_Tearful)*100,0) as Affected_Percent
+from SQLExploration.dbo.postnatal group by Age order by Affected_Percent Desc
 
 
---select Age,Suicideattempt from StrugglesMax where Suicideattempt=(select Suicideattempt=Max(Suicideattempt) from StrugglesMax)
+
 
 
 
